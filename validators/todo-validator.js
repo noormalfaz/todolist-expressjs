@@ -2,10 +2,10 @@ const { body, validationResult } = require("express-validator");
 
 const todoValidationRules = () => {
   return [
-    body("title").notEmpty().withMessage("Title tidak boleh kosong"),
+    body("title").notEmpty().withMessage("Title cannot be empty"),
     body("is_completed")
       .isBoolean()
-      .withMessage("is_completed harus berupa boolean"),
+      .withMessage("is_completed must be a boolean"),
   ];
 };
 
@@ -19,7 +19,7 @@ const todoValidate = (req, res, next) => {
 
   return res.status(422).json({
     status: 422,
-    message: "Error validasi",
+    message: "Validation error",
     data: extractedErrors,
   });
 };

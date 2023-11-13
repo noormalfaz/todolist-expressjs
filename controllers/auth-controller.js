@@ -11,14 +11,14 @@ const registerUser = async (req, res) => {
     if (checkEmail) {
       return res.status(400).json({
         status: 400,
-        message: "Email anda sudah terdaftar",
+        message: "Your email is already registered",
       });
     }
 
     if (password !== konfirmasi_password) {
       return res.status(400).json({
         status: 400,
-        message: "Password dan Konfirmasi Password tidak cocok",
+        message: "Password and Confirmation Password do not match",
       });
     }
 
@@ -28,14 +28,14 @@ const registerUser = async (req, res) => {
     const register = await User.create({ name, email, password: hashPassword });
     res.status(201).json({
       status: 201,
-      message: "Anda berhasil melakukan registrasi",
+      message: "You have successfully registered",
       data: register,
     });
   } catch (error) {
     console.error(error);
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal selama registrasi",
+      message: "Internal server error during registration",
     });
   }
 };
@@ -47,7 +47,7 @@ const loginUser = async (req, res) => {
     if (!checkEmail) {
       return res.status(400).json({
         status: 400,
-        message: "Email anda tidak terdaftar",
+        message: "Your email is not registered",
       });
     }
 
@@ -59,7 +59,7 @@ const loginUser = async (req, res) => {
     if (!matchPassword) {
       return res.status(400).json({
         status: 400,
-        message: "Password anda salah",
+        message: "Your password is incorrect",
       });
     }
 
@@ -71,14 +71,14 @@ const loginUser = async (req, res) => {
 
     return res.status(200).json({
       status: 200,
-      message: "Anda berhasil login",
+      message: "You are logged in successfully",
       data: checkEmail,
       token: accessToken,
     });
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal selama login",
+      message: "Internal server error during login",
     });
   }
 };
@@ -93,14 +93,14 @@ const logoutUser = (req, res) => {
 
     return res.status(200).json({
       status: 200,
-      message: "Anda berhasil logout",
+      message: "You are successfully logged out",
       invalidatedToken: invalidatedToken,
     });
   } catch (error) {
     console.error(error);
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal selama logout",
+      message: "Internal server error during logout",
     });
   }
 };

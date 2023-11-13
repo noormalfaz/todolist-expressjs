@@ -16,7 +16,7 @@ const getAllTodo = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal pada todo",
+      message: "Internal server error on todo",
     });
   }
 };
@@ -30,19 +30,19 @@ const getTodoById = async (req, res) => {
     if (!dataTodo) {
       return res.status(400).json({
         status: 400,
-        message: "Data tidak ditemukan",
+        message: "Data not found",
       });
     }
 
     res.status(200).json({
       status: 200,
-      message: "Detail data todo",
+      message: "Detailed todo data",
       data: dataTodo,
     });
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal pada todo",
+      message: "Internal server error on todo",
     });
   }
 };
@@ -59,13 +59,13 @@ const createTodo = async (req, res) => {
     });
     res.status(201).json({
       status: 201,
-      message: "Todo anda berhasil dibuat",
+      message: "Your todo was successfully created",
       data: dataTodo,
     });
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal pada todo",
+      message: "Internal server error on todo",
     });
   }
 };
@@ -81,7 +81,7 @@ const updateTodo = async (req, res) => {
     if (!dataTodo) {
       return res.status(400).json({
         status: 400,
-        message: "Data tidak ditemukan",
+        message: "Data not found",
       });
     }
 
@@ -95,12 +95,12 @@ const updateTodo = async (req, res) => {
     );
     res.status(200).json({
       status: 200,
-      message: "Todo anda berhasil diubah",
+      message: "Your todo was successfully changed",
     });
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal pada todo",
+      message: "Internal server error on todo",
     });
   }
 };
@@ -114,18 +114,18 @@ const deleteTodo = async (req, res) => {
     if (!dataTodo) {
       return res.status(400).json({
         status: 400,
-        message: "Data tidak ditemukan",
+        message: "Data not found",
       });
     }
     await Todo.destroy({ where: { id: req.params.id, user_id: id } });
     res.status(200).json({
       status: 200,
-      message: "Todo anda berhasil dihapus",
+      message: "Your todo was successfully deleted",
     });
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal pada todo",
+      message: "Internal server error on todo",
     });
   }
 };
@@ -136,12 +136,12 @@ const deleteAllTodo = async (req, res) => {
     await Todo.destroy({ where: { user_id: id } });
     res.status(200).json({
       status: 200,
-      message: "Todo anda berhasil dihapus",
+      message: "Your todo was successfully deleted",
     });
   } catch (error) {
     return res.status(500).json({
       status: 500,
-      message: "Kesalahan server internal pada todo",
+      message: "Internal server error on todo",
     });
   }
 };

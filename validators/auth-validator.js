@@ -2,12 +2,12 @@ const { body, validationResult } = require("express-validator");
 
 const registerValidationRules = () => {
   return [
-    body("name").notEmpty().withMessage("Name tidak boleh kosong"),
-    body("email").isEmail().withMessage("Email tidak valid"),
-    body("password").notEmpty().withMessage("Password tidak boleh kosong"),
+    body("name").notEmpty().withMessage("Name cannot be empty"),
+    body("email").isEmail().withMessage("Invalid email"),
+    body("password").notEmpty().withMessage("Password cannot be empty"),
     body("konfirmasi_password")
       .notEmpty()
-      .withMessage("Konfirmasi password tidak boleh kosong"),
+      .withMessage("Confirmation password cannot be empty"),
   ];
 };
 
@@ -21,15 +21,15 @@ const registerValidate = (req, res, next) => {
 
   return res.status(422).json({
     status: 422,
-    message: "Error validasi",
+    message: "Validation error",
     data: extractedErrors,
   });
 };
 
 const loginValidationRules = () => {
   return [
-    body("email").isEmail().withMessage("Email tidak valid"),
-    body("password").notEmpty().withMessage("Password tidak boleh kosong"),
+    body("email").isEmail().withMessage("Invalid email"),
+    body("password").notEmpty().withMessage("Password cannot be empty"),
   ];
 };
 
@@ -43,7 +43,7 @@ const loginValidate = (req, res, next) => {
 
   return res.status(422).json({
     status: 422,
-    message: "Error validasi",
+    message: "Validation error",
     data: extractedErrors,
   });
 };
