@@ -3,6 +3,7 @@ const route = express.Router();
 const verifyToken = require("../middleware/auth");
 const authRoutes = require("./auth-route");
 const userRoutes = require("./user-route");
+const todoRoutes = require("./todo-route");
 
 route.get("/", (req, res) => {
   res.status(200).json({
@@ -13,5 +14,6 @@ route.get("/", (req, res) => {
 
 route.use("/", authRoutes);
 route.use("/user", verifyToken, userRoutes);
+route.use("/todos", verifyToken, todoRoutes);
 
 module.exports = route;
