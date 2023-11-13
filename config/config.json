@@ -1,9 +1,9 @@
 {
-  "development": {
-    "username": "root",
-    "password": null,
-    "database": "db_todolist_express",
-    "host": "127.0.0.1",
+  "production": {
+    "username": "sql12661666",
+    "password": "detQYFZ3DI",
+    "database": "sql12661666",
+    "host": "sql12.freemysqlhosting.net",
     "dialect": "mysql"
   },
   "test": {
@@ -13,7 +13,7 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
+  "development": {
     "username": "root",
     "password": null,
     "database": "database_production",

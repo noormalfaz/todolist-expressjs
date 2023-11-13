@@ -1,7 +1,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const key = "jsfgfjguwrg8783wgbjs849h2fu3cnsvh8wyr8fhwfvi2g225";
+const key = "yaemiko19";
 
 const registerUser = async (req, res) => {
   try {
@@ -84,9 +84,10 @@ const loginUser = async (req, res) => {
 };
 
 const logoutUser = (req, res) => {
+  console.log(req.payload);
   try {
     const { id, email } = req.payload;
-    const invalidatedToken = jwt.sign({ id, email }, process.env.JWT_SECRET, {
+    const invalidatedToken = jwt.sign({ id, email }, key, {
       expiresIn: "1s",
     });
 

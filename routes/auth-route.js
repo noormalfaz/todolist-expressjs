@@ -15,11 +15,11 @@ const route = express.Router();
 
 route.post(
   "/register",
-  registerUser,
   registerValidationRules(),
-  registerValidate
+  registerValidate,
+  registerUser
 );
-route.post("/login", loginUser, loginValidationRules(), loginValidate);
-route.get("/logout", logoutUser, verifyToken);
+route.post("/login", loginValidationRules(), loginValidate, loginUser);
+route.get("/logout", verifyToken, logoutUser);
 
 module.exports = route;
